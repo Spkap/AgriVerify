@@ -1,0 +1,105 @@
+import React, { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import FarmerOnBoarding from './components/FarmerOnBoarding';
+import CertificationForm from './components/CertificationForm';
+import QRCodeDisplay from './components/QRCodeDisplay';
+import VerifyPage from './components/VerifyPage';
+import AgriVerifyArtifact from './artifacts/contracts/AgriVerify.sol/AgriVerify.json';
+import contractAddress from './artifacts/contracts/contract-address.json';
+
+const App = () => {
+  const [agriVerifyContract, setAgriVerifyContract] = useState(null);
+  const [connectedAccount, setConnectedAccount] = useState('');
+  const [cropId, setCropId] = useState(null);
+
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        setConnectedAccount(accounts[0]);
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(
+          contractAddress.AgriVerify,
+          AgriVerifyArtifact.abi,
+          signer,
+        );
+        setAgriVerifyContract(contract);
+      } catch (error) {
+        console.error('Failed to connect wallet:', error);
+      }
+    } else {
+      alert('Please install MetaMask to use this app.');
+    }
+  };
+
+  const onRegisterFarmer = async (name) => {
+    if (agriVerifyContract) {
+      try {
+        const tx = await agriVerifyContract.registerFarmer(name);
+        await tx.wait();
+      } catch (error) {
+        console.error('Error registering farmer:', error);
+      }
+    }
+  };
+
+  const onSubmitCrop = async (cropName) => {
+    if (agriVerifyContract) {
+      try {
+        const tx = await agriVerifyContract.submitCrop(cropName);
+        await tx.wait();
+        const newCropId = await agriVerifyContract.cropCount();
+        setCropId(newCropId.toString());
+      } catch (error) {
+        console.error('Error submitting crop:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.request({ method: 'eth_accounts' }).then((accounts) => {
+        if (accounts.length > 0) {
+          setConnectedAccount(accounts[0]);
+          connectWallet();
+        }
+      });
+    }
+  }, []);
+
+  return (
+    <Router>
+      <div>
+        <h1>AgriVerify</h1>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              connectedAccount ? (
+                <>
+                  <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
+                  <CertificationForm onSubmitCrop={onSubmitCrop} />
+                  {cropId && (
+                    <>
+                      <h2>Generated QR Code for Crop ID: {cropId}</h2>
+                      <QRCodeDisplay cropId={cropId} />
+                    </>
+                  )}
+                </>
+              ) : (
+                <button onClick={connectWallet}>Connect Wallet</button>
+              )
+            }
+          />
+          <Route path="/verify/:cropId" element={<VerifyPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
