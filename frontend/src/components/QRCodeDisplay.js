@@ -3,7 +3,7 @@ import QRCode from 'qrcode';
 
 const QRCodeDisplay = ({ cropId }) => {
   const qrValue = cropId
-    ? `${process.env.REACT_APP_BASE_URL}/verify/${cropId}`
+    ? `https://agriverify.vercel.app/verify/${cropId}`
     : '';
   const canvasRef = useRef(null);
 
