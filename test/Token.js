@@ -51,8 +51,6 @@ describe("AgriVerify contract", function () {
       const { agriVerify, owner, addr1 } = await loadFixture(deployAgriVerifyFixture);
       const initialOwnerBalance = await agriVerify.balanceOf(owner.address);
 
-      // Try to send 1 token from addr1 (0 tokens) to owner.
-      // `require` will evaluate false and revert the transaction.
       await expect(
         agriVerify.connect(addr1).transfer(owner.address, ethers.parseUnits("1", 18))
       ).to.be.revertedWithCustomError(agriVerify, "ERC20InsufficientBalance")
