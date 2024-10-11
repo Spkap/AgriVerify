@@ -33,18 +33,30 @@ const VerifyPage = () => {
     fetchCropDetails();
   }, [cropId]);
 
-  if (!cropDetails) return <div>Loading crop details...</div>;
+  if (!cropDetails)
+    return <div className="loading">Loading crop details...</div>;
 
   return (
-    <div className="verify-page">
+    <div className="container">
       <h1>Crop Verification</h1>
-      <h2>Crop ID: {cropId}</h2>
-      <p>Name: {cropDetails.name}</p>
-      <p>Certification Status: {cropDetails.certificationStatus}</p>
-      <p>Farmer Address: {cropDetails.farmer}</p>
-      <Link to="/" className="back-button">
-        Back to Home
-      </Link>
+      <div className="card">
+        <h2>Crop ID: {cropId}</h2>
+        <div className="crop-details">
+          <p>
+            <strong>Name:</strong> {cropDetails.name}
+          </p>
+          <p>
+            <strong>Certification Status:</strong>{' '}
+            {cropDetails.certificationStatus}
+          </p>
+          <p>
+            <strong>Farmer Address:</strong> {cropDetails.farmer}
+          </p>
+        </div>
+        <Link to="/" className="button back-button">
+          Back to Home
+        </Link>
+      </div>
     </div>
   );
 };

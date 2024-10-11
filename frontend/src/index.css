@@ -5,66 +5,53 @@ body {
   padding: 0;
 }
 
-h1 {
-  text-align: center;
-}
-
-div {
-  margin: 20px;
-  padding: 10px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-input {
-  margin: 5px 0;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button {
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.verify-page {
-  max-width: 600px;
+.container {
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.crop-details {
-  background-color: #f0f0f0;
-  padding: 15px;
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+.card {
+  background-color: white;
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   margin-bottom: 20px;
 }
 
-.back-button {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #4caf50;
-  color: white;
-  text-decoration: none;
+input, button, .button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
   border-radius: 4px;
 }
 
-.back-button:hover {
+input {
+  border: 1px solid #ddd;
+}
+
+button, .button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+button:hover, .button:hover {
   background-color: #45a049;
 }
 
-.loading,
-.error {
+.loading, .error {
   text-align: center;
   margin-top: 50px;
   font-size: 18px;
@@ -72,4 +59,23 @@ button:hover {
 
 .error {
   color: red;
+}
+
+.qr-code {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr-code canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.crop-details p {
+  margin: 10px 0;
+}
+
+.back-button {
+  max-width: 200px;
+  margin: 20px auto;
 }

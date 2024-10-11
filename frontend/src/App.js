@@ -101,7 +101,7 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className="container">
         <h1>AgriVerify</h1>
         <Routes>
           <Route
@@ -109,16 +109,20 @@ const App = () => {
             element={
               connectedAccount ? (
                 <>
-                  <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
-                  <CertificationForm onSubmitCrop={onSubmitCrop} />
+                  <div className="card">
+                    <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
+                  </div>
+                  <div className="card">
+                    <CertificationForm onSubmitCrop={onSubmitCrop} />
+                  </div>
                   {cropId && (
-                    <>
+                    <div className="card">
                       <h2>Generated QR Code for Crop ID: {cropId}</h2>
                       <QRCodeDisplay cropId={cropId} />
-                    </>
+                    </div>
                   )}
                   {isOwner && (
-                    <div>
+                    <div className="card">
                       <h2>Certify Crop (Owner Only)</h2>
                       <input
                         type="number"
@@ -131,7 +135,9 @@ const App = () => {
                   )}
                 </>
               ) : (
-                <button onClick={connectWallet}>Connect Wallet</button>
+                <div className="card">
+                  <button onClick={connectWallet}>Connect Wallet</button>
+                </div>
               )
             }
           />

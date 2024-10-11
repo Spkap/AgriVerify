@@ -18,8 +18,8 @@ const QRCodeDisplay = ({ cropId }) => {
   if (!cropId) return <div>No crop ID available for QR code generation.</div>;
 
   return (
-    <div style={{ margin: '0 auto', maxWidth: 256, width: '100%' }}>
-      <canvas ref={canvasRef} style={{ width: '100%' }} />
+    <div className="qr-code">
+      <canvas ref={canvasRef} />
     </div>
   );
 };

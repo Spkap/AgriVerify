@@ -12,7 +12,7 @@ const FarmerOnBoarding = ({ agriVerifyContract, onRegisterFarmer }) => {
   };
 
   return (
-    <div>
+    <div className="card">
       <h2>Farmer Onboarding</h2>
       <form onSubmit={handleSubmit}>
         <input

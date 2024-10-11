@@ -12,7 +12,7 @@ const CertificationForm = ({ onSubmitCrop }) => {
   };
 
   return (
-    <div>
+    <div className="card">
       <h2>Submit Crop</h2>
       <form onSubmit={handleSubmit}>
         <input
