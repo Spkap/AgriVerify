@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
@@ -11,7 +11,8 @@ body {
   padding: 20px;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   color: #333;
 }
@@ -24,7 +25,9 @@ h1, h2 {
   margin-bottom: 20px;
 }
 
-input, button, .button {
+input,
+button,
+.button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -37,7 +40,8 @@ input {
   border: 1px solid #ddd;
 }
 
-button, .button {
+button,
+.button {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -47,11 +51,13 @@ button, .button {
   text-align: center;
 }
 
-button:hover, .button:hover {
+button:hover,
+.button:hover {
   background-color: #45a049;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   margin-top: 50px;
   font-size: 18px;
