@@ -96,11 +96,7 @@ const App = () => {
               connectedAccount ? (
                 <>
                   <div className="card">
-                    <FarmerOnBoarding
-                      onRegisterFarmer={onRegisterFarmer}
-                      connectedAccount={connectedAccount}
-                      agriVerifyContract={agriVerifyContract}
-                    />
+                    <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
                   </div>
                   <div className="card">
                     <CertificationForm onSubmitCrop={onSubmitCrop} />
