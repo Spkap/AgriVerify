@@ -31,8 +31,7 @@ const VerifyPage = () => {
           farmer: details.farmer,
         });
 
-        // Fetch farmer's name
-        const farmerInfo = await contract.getFarmer(details.farmer);
+         const farmerInfo = await contract.getFarmer(details.farmer);
         setFarmerName(farmerInfo.name);
       } catch (error) {
         console.error('Error fetching crop details:', error);
