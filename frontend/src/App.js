@@ -7,13 +7,13 @@ import QRCodeDisplay from './components/QRCodeDisplay';
 import VerifyPage from './components/VerifyPage';
 import AgriVerifyArtifact from './artifacts/contracts/AgriVerify.sol/AgriVerify.json';
 import contractAddress from './artifacts/contracts/contract-address.json';
+import CertifyCrop from './components/CertifyCrop';
 
 const App = () => {
   const [agriVerifyContract, setAgriVerifyContract] = useState(null);
   const [connectedAccount, setConnectedAccount] = useState('');
   const [cropId, setCropId] = useState(null);
   const [isOwner, setIsOwner] = useState(false);
-  const [certifyCropId, setCertifyCropId] = useState('');
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -74,20 +74,6 @@ const App = () => {
     }
   };
 
-  const onCertifyCrop = async () => {
-    if (agriVerifyContract && certifyCropId) {
-      try {
-        const tx = await agriVerifyContract.certifyCrop(certifyCropId);
-        await tx.wait();
-        alert(`Crop ${certifyCropId} certified successfully`);
-        setCertifyCropId('');
-      } catch (error) {
-        console.error('Error certifying crop:', error);
-        alert('Failed to certify crop. Please try again.');
-      }
-    }
-  };
-
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.request({ method: 'eth_accounts' }).then((accounts) => {
@@ -122,16 +108,7 @@ const App = () => {
                     </div>
                   )}
                   {isOwner && (
-                    <div className="card">
-                      <h2>Certify Crop (Owner Only)</h2>
-                      <input
-                        type="number"
-                        value={certifyCropId}
-                        onChange={(e) => setCertifyCropId(e.target.value)}
-                        placeholder="Enter Crop ID to Certify"
-                      />
-                      <button onClick={onCertifyCrop}>Certify Crop</button>
-                    </div>
+                    <CertifyCrop agriVerifyContract={agriVerifyContract} />
                   )}
                 </>
               ) : (
