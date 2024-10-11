@@ -118,7 +118,7 @@ const App = () => {
               )
             }
           />
-          <Route path="/verify/:cropId" element={<VerifyPage />} />
+          <Route path="/verify/:cropId" element={<VerifyPage agriVerifyContract={agriVerifyContract} />} />
         </Routes>
       </div>
     </Router>
