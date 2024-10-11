@@ -53,7 +53,7 @@ const VerifyPage = () => {
           <strong>Crop ID:</strong> {cropId}
         </p>
         <p>
-          <strong>Name:</strong> {cropDetails.name}
+          <strong>Crop Name:</strong> {cropDetails.name}
         </p>
         <p>
           <strong>Farmer Name:</strong> {farmerName || 'Loading...'}
