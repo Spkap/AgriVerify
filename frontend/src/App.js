@@ -126,7 +126,6 @@ const App = () => {
             element={
               <VerifyPage
                 agriVerifyContract={agriVerifyContract}
-                connectWallet={connectWallet}
               />
             }
           />
