@@ -47,15 +47,18 @@ const App = () => {
       console.error('Error checking owner:', error);
     }
   };
-
   const onRegisterFarmer = async (name) => {
     if (agriVerifyContract) {
       try {
         const tx = await agriVerifyContract.registerFarmer(name);
         await tx.wait();
+        alert(`Farmer ${name} registered successfully!`);
       } catch (error) {
         console.error('Error registering farmer:', error);
+        alert(`Failed to register farmer: ${error.message}`);
       }
+    } else {
+      alert('Contract not initialized. Please connect your wallet first.');
     }
   };
 
@@ -96,7 +99,10 @@ const App = () => {
               connectedAccount ? (
                 <>
                   <div className="card">
-                    <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
+                    <FarmerOnBoarding
+                      agriVerifyContract={agriVerifyContract}
+                      onRegisterFarmer={onRegisterFarmer}
+                    />
                   </div>
                   <div className="card">
                     <CertificationForm onSubmitCrop={onSubmitCrop} />
@@ -118,7 +124,15 @@ const App = () => {
               )
             }
           />
-          <Route path="/verify/:cropId" element={<VerifyPage agriVerifyContract={agriVerifyContract} />} />
+          <Route
+            path="/verify/:cropId"
+            element={
+              <VerifyPage
+                agriVerifyContract={agriVerifyContract}
+                connectWallet={connectWallet}
+              />
+            }
+          />
         </Routes>
       </div>
     </Router>

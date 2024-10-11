@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 
-const FarmerOnBoarding = ({ agriVerifyContract, onRegisterFarmer }) => {
+const FarmerOnBoarding = ({ agriVerifyContract }) => {
   const [name, setName] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (onRegisterFarmer) {
-      console.log('Submitting farmer registration:', name);
-      await onRegisterFarmer(name);
+    if (agriVerifyContract) {
+      try {
+        setIsRegistering(true);
+        console.log('Submitting farmer registration:', name);
+        const tx = await agriVerifyContract.registerFarmer(name);
+        await tx.wait();
+        alert(`Farmer ${name} registered successfully!`);
+        setName('');
+      } catch (error) {
+        console.error('Error registering farmer:', error);
+        alert(`Failed to register farmer: ${error.message}`);
+      } finally {
+        setIsRegistering(false);
+      }
+    } else {
+      alert('Contract not initialized. Please connect your wallet first.');
     }
   };
 
@@ -20,8 +34,11 @@ const FarmerOnBoarding = ({ agriVerifyContract, onRegisterFarmer }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter Farmer Name"
+          required
         />
-        <button type="submit">Register Farmer</button>
+        <button type="submit" disabled={isRegistering}>
+          {isRegistering ? 'Registering...' : 'Register Farmer'}
+        </button>
       </form>
     </div>
   );
