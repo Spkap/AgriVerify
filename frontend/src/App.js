@@ -12,6 +12,8 @@ const App = () => {
   const [agriVerifyContract, setAgriVerifyContract] = useState(null);
   const [connectedAccount, setConnectedAccount] = useState('');
   const [cropId, setCropId] = useState(null);
+  const [isOwner, setIsOwner] = useState(false);
+  const [certifyCropId, setCertifyCropId] = useState('');
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -28,6 +30,7 @@ const App = () => {
           signer,
         );
         setAgriVerifyContract(contract);
+        checkOwner(contract, accounts[0]);
       } catch (error) {
         console.error('Failed to connect wallet:', error);
       }
@@ -36,13 +39,24 @@ const App = () => {
     }
   };
 
+  const checkOwner = async (contract, account) => {
+    try {
+      const owner = await contract.owner();
+      setIsOwner(owner.toLowerCase() === account.toLowerCase());
+    } catch (error) {
+      console.error('Error checking owner:', error);
+    }
+  };
+
   const onRegisterFarmer = async (name) => {
     if (agriVerifyContract) {
       try {
         const tx = await agriVerifyContract.registerFarmer(name);
         await tx.wait();
+        alert('Farmer registered successfully!');
       } catch (error) {
         console.error('Error registering farmer:', error);
+        alert('Failed to register farmer. Please try again.');
       }
     }
   };
@@ -54,8 +68,24 @@ const App = () => {
         await tx.wait();
         const newCropId = await agriVerifyContract.cropCount();
         setCropId(newCropId.toString());
+        alert(`Crop submitted successfully! Crop ID: ${newCropId}`);
       } catch (error) {
         console.error('Error submitting crop:', error);
+        alert('Failed to submit crop. Please try again.');
+      }
+    }
+  };
+
+  const onCertifyCrop = async () => {
+    if (agriVerifyContract && certifyCropId) {
+      try {
+        const tx = await agriVerifyContract.certifyCrop(certifyCropId);
+        await tx.wait();
+        alert(`Crop ${certifyCropId} certified successfully`);
+        setCertifyCropId('');
+      } catch (error) {
+        console.error('Error certifying crop:', error);
+        alert('Failed to certify crop. Please try again.');
       }
     }
   };
@@ -88,6 +118,18 @@ const App = () => {
                       <h2>Generated QR Code for Crop ID: {cropId}</h2>
                       <QRCodeDisplay cropId={cropId} />
                     </>
+                  )}
+                  {isOwner && (
+                    <div>
+                      <h2>Certify Crop (Owner Only)</h2>
+                      <input
+                        type="number"
+                        value={certifyCropId}
+                        onChange={(e) => setCertifyCropId(e.target.value)}
+                        placeholder="Enter Crop ID to Certify"
+                      />
+                      <button onClick={onCertifyCrop}>Certify Crop</button>
+                    </div>
                   )}
                 </>
               ) : (
