@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ethers } from 'ethers';
-import AgriVerifyArtifact from '../artifacts/contracts/AgriVerify.sol/AgriVerify.json';
-import contractAddress from '../artifacts/contracts/contract-address.json';
 
 const VerifyPage = ({ agriVerifyContract }) => {
   const { cropId } = useParams();
@@ -25,9 +22,10 @@ const VerifyPage = ({ agriVerifyContract }) => {
           farmer: details.farmer,
         });
 
+        // Fetch farmer details for the corresponding crop
         const farmerInfo = await agriVerifyContract.getFarmer(details.farmer);
         console.log('Farmer info:', farmerInfo);
-        setFarmerName(farmerInfo[0]);
+        setFarmerName(farmerInfo.name);
       } catch (error) {
         console.error('Error fetching crop details:', error);
         setError(error.message);
@@ -53,7 +51,7 @@ const VerifyPage = ({ agriVerifyContract }) => {
         <p><strong>Farmer Name:</strong> {farmerName || 'Unknown'}</p>
         <p>
           <strong>Certification Status:</strong>{' '}
-          {cropDetails.certificationStatus ? 'Certified' : 'Not Certified'}
+          {cropDetails.certificationStatus}
         </p>
         <p><strong>Farmer Address:</strong> {cropDetails.farmer}</p>
         <Link to="/" className="button back-button">

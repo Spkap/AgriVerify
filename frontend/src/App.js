@@ -99,6 +99,7 @@ const App = () => {
                     <FarmerOnBoarding
                       onRegisterFarmer={onRegisterFarmer}
                       connectedAccount={connectedAccount}
+                      agriVerifyContract={agriVerifyContract}
                     />
                   </div>
                   <div className="card">
@@ -123,11 +124,7 @@ const App = () => {
           />
           <Route
             path="/verify/:cropId"
-            element={
-              <VerifyPage
-                agriVerifyContract={agriVerifyContract}
-              />
-            }
+            element={<VerifyPage agriVerifyContract={agriVerifyContract} />}
           />
         </Routes>
       </div>

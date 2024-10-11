@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const FarmerOnBoarding = ({ onRegisterFarmer, connectedAccount }) => {
+const FarmerOnBoarding = ({ onRegisterFarmer, connectedAccount, agriVerifyContract }) => {
   const [name, setName] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    const checkFarmerRegistration = async () => {
+      if (agriVerifyContract && connectedAccount) {
+        try {
+          const farmerInfo = await agriVerifyContract.getFarmer(connectedAccount);
+          setIsRegistered(farmerInfo.isRegistered);
+        } catch (error) {
+          console.error('Error checking farmer registration:', error);
+        }
+      }
+    };
+
+    checkFarmerRegistration();
+  }, [agriVerifyContract, connectedAccount]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +35,7 @@ const FarmerOnBoarding = ({ onRegisterFarmer, connectedAccount }) => {
       console.log('Submitting farmer registration:', name);
       await onRegisterFarmer(name);
       setName('');
+      setIsRegistered(true);
       alert('Farmer registered successfully!');
     } catch (error) {
       console.error('Error registering farmer:', error);
@@ -27,6 +44,15 @@ const FarmerOnBoarding = ({ onRegisterFarmer, connectedAccount }) => {
       setIsRegistering(false);
     }
   };
+
+  if (isRegistered) {
+    return (
+      <div className="card">
+        <h2>Farmer Onboarding</h2>
+        <p>You are already registered as a farmer.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="card">
