@@ -53,10 +53,8 @@ const App = () => {
       try {
         const tx = await agriVerifyContract.registerFarmer(name);
         await tx.wait();
-        alert('Farmer registered successfully!');
       } catch (error) {
         console.error('Error registering farmer:', error);
-        alert('Failed to register farmer. Please try again.');
       }
     }
   };
