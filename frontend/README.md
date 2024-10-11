@@ -24,7 +24,8 @@ This is the frontend application for AgriVerify, a decentralized application (dA
 - React.js
 - ethers.js
 - React Router
-- QRCode.react
+- node-qrcode
+
 
 ## Project Structure
 

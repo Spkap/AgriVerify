@@ -25,6 +25,7 @@ const VerifyPage = () => {
         }
 
         const details = await contract.getCrop(cropId);
+        console.log('Crop details:', details);
         setCropDetails({
           name: details.name,
           certificationStatus: details.certificationStatus,
@@ -32,7 +33,8 @@ const VerifyPage = () => {
         });
 
         const farmerInfo = await contract.getFarmer(details.farmer);
-        setFarmerName(farmerInfo.name);
+        console.log('Farmer info:', farmerInfo);
+        setFarmerName(farmerInfo[0]);
       } catch (error) {
         console.error('Error fetching crop details:', error);
         setCropDetails(null);

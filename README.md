@@ -36,7 +36,7 @@ AgriVerify aims to enhance trust and transparency in organic farming by enabling
 - React.js for frontend development
 - ethers.js for Ethereum interaction
 - OpenZeppelin for secure smart contract components
-- QRCode.react for QR code generation
+- node-qrcode for QR code generation
 - MetaMask for Ethereum wallet integration
 
 ## Project Structure
