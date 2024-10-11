@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 
-const FarmerOnBoarding = ({ agriVerifyContract }) => {
+const FarmerOnBoarding = ({ onRegisterFarmer, connectedAccount }) => {
   const [name, setName] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (agriVerifyContract) {
-      try {
-        setIsRegistering(true);
-        console.log('Submitting farmer registration:', name);
-        const tx = await agriVerifyContract.registerFarmer(name);
-        await tx.wait();
-        alert(`Farmer ${name} registered successfully!`);
-        setName('');
-      } catch (error) {
-        console.error('Error registering farmer:', error);
-        alert(`Failed to register farmer: ${error.message}`);
-      } finally {
-        setIsRegistering(false);
-      }
-    } else {
-      alert('Contract not initialized. Please connect your wallet first.');
+    if (!connectedAccount) {
+      alert('Please connect your wallet first.');
+      return;
+    }
+    if (!name.trim()) {
+      alert('Please enter a valid farmer name.');
+      return;
+    }
+    setIsRegistering(true);
+    try {
+      console.log('Submitting farmer registration:', name);
+      await onRegisterFarmer(name);
+      setName('');
+      alert('Farmer registered successfully!');
+    } catch (error) {
+      console.error('Error registering farmer:', error);
+      alert(`Failed to register farmer: ${error.message}`);
+    } finally {
+      setIsRegistering(false);
     }
   };
 
@@ -34,12 +37,14 @@ const FarmerOnBoarding = ({ agriVerifyContract }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter Farmer Name"
-          required
         />
-        <button type="submit" disabled={isRegistering}>
+        <button type="submit" disabled={isRegistering || !connectedAccount}>
           {isRegistering ? 'Registering...' : 'Register Farmer'}
         </button>
       </form>
+      {!connectedAccount && (
+        <p className="warning">Please connect your wallet to register.</p>
+      )}
     </div>
   );
 };

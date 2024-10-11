@@ -47,18 +47,15 @@ const App = () => {
       console.error('Error checking owner:', error);
     }
   };
+
   const onRegisterFarmer = async (name) => {
     if (agriVerifyContract) {
       try {
         const tx = await agriVerifyContract.registerFarmer(name);
         await tx.wait();
-        alert(`Farmer ${name} registered successfully!`);
       } catch (error) {
         console.error('Error registering farmer:', error);
-        alert(`Failed to register farmer: ${error.message}`);
       }
-    } else {
-      alert('Contract not initialized. Please connect your wallet first.');
     }
   };
 
@@ -100,8 +97,8 @@ const App = () => {
                 <>
                   <div className="card">
                     <FarmerOnBoarding
-                      agriVerifyContract={agriVerifyContract}
                       onRegisterFarmer={onRegisterFarmer}
+                      connectedAccount={connectedAccount}
                     />
                   </div>
                   <div className="card">
