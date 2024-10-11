@@ -31,7 +31,7 @@ const VerifyPage = () => {
           farmer: details.farmer,
         });
 
-         const farmerInfo = await contract.getFarmer(details.farmer);
+        const farmerInfo = await contract.getFarmer(details.farmer);
         setFarmerName(farmerInfo.name);
       } catch (error) {
         console.error('Error fetching crop details:', error);
@@ -42,11 +42,11 @@ const VerifyPage = () => {
     fetchCropDetails();
   }, [cropId, agriVerifyContract]);
 
-  if (!cropDetails) return <div className="loading">Loading crop details...</div>;
+  if (!cropDetails)
+    return <div className="loading">Loading crop details...</div>;
 
   return (
     <div className="container">
-      <h1>AgriVerify</h1>
       <h2>Crop Verification</h2>
       <div className="card">
         <p>
@@ -59,7 +59,8 @@ const VerifyPage = () => {
           <strong>Farmer Name:</strong> {farmerName || 'Loading...'}
         </p>
         <p>
-          <strong>Certification Status:</strong> {cropDetails.certificationStatus}
+          <strong>Certification Status:</strong>{' '}
+          {cropDetails.certificationStatus}
         </p>
         <p>
           <strong>Farmer Address:</strong> {cropDetails.farmer}
