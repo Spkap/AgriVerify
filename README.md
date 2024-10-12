@@ -6,6 +6,7 @@ AgriVerify is a decentralized application (dApp) that brings trust and transpare
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Video](#video)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
@@ -28,6 +29,12 @@ AgriVerify aims to enhance trust and transparency in organic farming by enabling
 - QR code generation for certified crops
 - Verification page for consumers
 - ERC20 token integration (AgriVerify Token - AGT)
+
+## Video
+
+Check out the video to see AgriVerify in action:
+
+[AgriVerify Demo Video](https://drive.google.com/file/d/17Cr-LZUm7JCrtxDwX89pZ2UzlVGzDC7H/view?usp=sharing)
 
 ## Technologies Used
 
