@@ -114,6 +114,20 @@ AgriVerify/
 5. Generate QR codes for certified crops.
 6. Use the verification page to scan QR codes and view crop certification details.
 
+Note: Given this implementation:
+
+- You can register as many unique farmers as there are Ethereum addresses.
+- Each unique Ethereum address can only register once as a farmer.
+- One registered farmer can register as many crops as he wants.
+
+Further improvements:
+
+- Auto-approval system
+- Adding more details about farmer and crop, such as farm location, registration date, etc.
+- Implementing farmer ratings or reputation system
+- Implementing a token reward system:
+  - We could reward farmers with tokens for successful certifications
+
 ## Smart Contract
 
 The `AgriVerify.sol` contract includes the following main functions:
