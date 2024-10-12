@@ -2,6 +2,8 @@
 
 AgriVerify is a decentralized application (dApp) that brings trust and transparency to organic farming through blockchain technology. It allows farmers to certify their crops and generates QR codes for easy verification by consumers.
 
+**Deployed Application: [https://agriverify.vercel.app/](https://agriverify.vercel.app/)**
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -109,12 +111,13 @@ AgriVerify/
 
 ## Usage
 
-1. Connect your wallet (e.g., MetaMask) to the application.
-2. Register as a farmer using the onboarding form.
-3. Submit crops for certification.
-4. As the contract owner, certify submitted crops.
-5. Generate QR codes for certified crops.
-6. Use the verification page to scan QR codes and view crop certification details.
+1. Visit the deployed application at [https://agriverify.vercel.app/](https://agriverify.vercel.app/)
+2. Connect your wallet (e.g., MetaMask) to the application.
+3. Register as a farmer using the onboarding form.
+4. Submit crops for certification.
+5. As the contract owner, certify submitted crops.
+6. Generate QR codes for certified crops.
+7. Use the verification page to scan QR codes and view crop certification details.
 
 ## Note:
 
