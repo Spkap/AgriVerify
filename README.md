@@ -11,11 +11,13 @@ AgriVerify is a decentralized application (dApp) that brings trust and transpare
 - [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
+- [Note](#note)
 - [Smart Contract](#smart-contract)
 - [Frontend](#frontend)
 - [Contributing](#contributing)
 - [License](#license)
 - [External Sources](#external-sources)
+- [Future Improvements](#future-improvements)
 - [Contact](#contact)
 
 ## Introduction
@@ -114,19 +116,13 @@ AgriVerify/
 5. Generate QR codes for certified crops.
 6. Use the verification page to scan QR codes and view crop certification details.
 
-Note: Given this implementation:
+## Note:
+
+Given this implementation:
 
 - You can register as many unique farmers as there are Ethereum addresses.
 - Each unique Ethereum address can only register once as a farmer.
 - One registered farmer can register as many crops as he wants.
-
-Further improvements:
-
-- Auto-approval system
-- Adding more details about farmer and crop, such as farm location, registration date, etc.
-- Implementing farmer ratings or reputation system
-- Implementing a token reward system:
-  - We could reward farmers with tokens for successful certifications
 
 ## Smart Contract
 
@@ -166,6 +162,14 @@ This project utilizes the following external resources:
 2. [Create React App](https://create-react-app.dev/): Used to set up the frontend React application with a modern build setup and no configuration.
 
 These resources have been instrumental in providing a solid foundation for both the smart contract development and the frontend user interface of AgriVerify.
+
+## Future Improvements
+
+- Auto-approval system
+- Adding more details about farmer and crop, such as farm location, registration date, etc.
+- Implementing farmer ratings or reputation system
+- Implementing a token reward system:
+  - We could reward farmers with tokens for successful certifications
 
 ## Contact
 
