@@ -32,7 +32,7 @@ AgriVerify aims to enhance trust and transparency in organic farming by enabling
 
 ## Demo Video
 
-Check out the video to see AgriVerify in action:
+Check out the demo video to see AgriVerify in action:
 
 [AgriVerify Demo Video](https://drive.google.com/file/d/17Cr-LZUm7JCrtxDwX89pZ2UzlVGzDC7H/view?usp=sharing)
 
