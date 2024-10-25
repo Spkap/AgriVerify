@@ -1,4 +1,4 @@
-# Task ID: AgriVerify
+# AgriVerify
 
 AgriVerify is a decentralized application (dApp) that brings trust and transparency to organic farming through blockchain technology. It allows farmers to certify their crops and generates QR codes for easy verification by consumers.
 
@@ -18,7 +18,6 @@ AgriVerify is a decentralized application (dApp) that brings trust and transpare
 - [Frontend](#frontend)
 - [Contributing](#contributing)
 - [License](#license)
-- [External Sources](#external-sources)
 - [Future Improvements](#future-improvements)
 - [Contact](#contact)
 
@@ -155,16 +154,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## External Sources
-
-This project utilizes the following external resources:
-
-1. [Hardhat Boilerplate](https://github.com/NomicFoundation/hardhat-boilerplate): Used as a starting point for the Ethereum development environment.
-
-2. [Create React App](https://create-react-app.dev/): Used to set up the frontend React application with a modern build setup and no configuration.
-
-These resources have been instrumental in providing a solid foundation for both the smart contract development and the frontend user interface of AgriVerify.
 
 ## Future Improvements
 
