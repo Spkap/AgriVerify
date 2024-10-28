@@ -5,7 +5,6 @@ require('@nomicfoundation/hardhat-verify');
 require('dotenv').config();
 const { RPC_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
-
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: '0.8.20',
