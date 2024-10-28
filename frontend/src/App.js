@@ -22,7 +22,7 @@ const App = () => {
       alert('Farmer registered successfully');
     } catch (error) {
       console.error('Error registering farmer:', error);
-      alert('Failed to register farmer');
+      alert('Farmer has already registered');
     }
   };
 
