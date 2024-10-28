@@ -4,61 +4,84 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-blue-50 to-purple-100 text-gray-800 min-h-screen font-sans;
+    @apply bg-[#f4f4f4] text-gray-800 min-h-screen font-sans;
   }
 }
 
 @layer components {
-  /* Container styling */
   .container {
     @apply max-w-4xl mx-auto px-4 py-12;
   }
 
-  /* Card styling */
   .card {
-    @apply bg-white rounded-xl shadow-lg p-8 mb-6 transition-transform transform hover:shadow-2xl hover:scale-105;
+    @apply bg-white rounded-xl shadow-lg p-8 mb-10 mt-4
+           hover:shadow-2xl transition-all duration-300;
   }
 
-  /* Title and header */
   h1 {
-    @apply text-6xl font-extrabold text-center bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent my-10;
+    @apply text-6xl font-extrabold text-center text-gray-900
+           mt-20 mb-10;
   }
 
   h2 {
-    @apply text-2xl font-semibold text-blue-600 mb-6 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-10 after:bg-blue-400;
+    @apply text-2xl font-semibold text-gray-900 mb-6 text-center relative 
+           after:content-[''] after:absolute after:left-1/2 
+           after:-translate-x-1/2 after:bottom-0 after:h-0.5;
   }
 
-  /* Form inputs */
+  .form-group {
+    @apply space-y-4;
+  }
+
+  .input,
   input {
-    @apply w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-colors duration-200;
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 
+           shadow-sm focus:ring-2 focus:ring-[#4caf50]/20 
+           focus:border-[#4caf50] transition-colors duration-200;
   }
 
-  /* Buttons */
   .button,
   button {
-    @apply w-full px-5 py-3 mt-4 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition-transform transform hover:scale-105 focus:ring-2 focus:ring-blue-200;
+    @apply w-full px-5 py-3 bg-[#4caf50] text-white font-medium 
+           rounded-lg shadow hover:bg-[#45a049] 
+           focus:ring-2 focus:ring-[#4caf50]/20 
+           transition-all duration-200;
   }
 
-  /* Loading and error messages */
   .loading {
-    @apply text-center text-blue-500 text-xl mt-10 animate-bounce;
+    @apply text-center text-[#4caf50] text-xl mt-10 animate-bounce;
   }
 
-  .error {
-    @apply text-center text-red-500 text-lg p-3 bg-red-100 rounded-lg border border-red-300;
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium;
   }
 
-  /* QR code styling */
+  .status-certified {
+    @apply bg-[#4caf50]/10 text-[#45a049];
+  }
+
+  .status-pending {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
   .qr-code {
-    @apply flex justify-center mt-8 bg-white p-4 rounded-lg shadow-md;
+    @apply flex justify-center mt-8 bg-white p-4 
+           rounded-lg shadow-md;
   }
 
-  /* Crop details styling */
+  .crop-details {
+    @apply space-y-4;
+  }
+
   .crop-details p {
-    @apply text-gray-600 flex items-center gap-3 border-b border-gray-100 pb-3;
+    @apply text-gray-600 flex items-center gap-3 
+           border-b border-gray-100 pb-3 last:border-b-0;
   }
 
-  /* Responsive adjustments */
+  .back-button {
+    @apply mt-6 bg-gray-500 hover:bg-gray-600;
+  }
+
   @screen sm {
     .container {
       @apply px-6;

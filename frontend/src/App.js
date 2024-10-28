@@ -86,17 +86,17 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <h1>AgriVerify</h1>
+        <h1>AgriVerify </h1>
         <Routes>
           <Route
             path="/"
             element={
               connectedAccount ? (
                 <>
-                  <div className="card">
+                  <div >
                     <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
                   </div>
-                  <div className="card">
+                  <div >
                     <CertificationForm onSubmitCrop={onSubmitCrop} />
                   </div>
                   {cropId && (
