@@ -15,6 +15,30 @@ const App = () => {
   const [cropId, setCropId] = useState(null);
   const [isOwner, setIsOwner] = useState(false);
 
+  const onRegisterFarmer = async (farmerName) => {
+    try {
+      const tx = await agriVerifyContract.registerFarmer(farmerName);
+      await tx.wait();
+      alert('Farmer registered successfully');
+    } catch (error) {
+      console.error('Error registering farmer:', error);
+      alert('Failed to register farmer');
+    }
+  };
+
+  const onSubmitCrop = async (cropName) => {
+    try {
+      const tx = await agriVerifyContract.submitCrop(cropName);
+      await tx.wait();
+      const cropCount = await agriVerifyContract.cropCount();
+      setCropId(cropCount.toString());
+      alert('Crop submitted successfully');
+    } catch (error) {
+      console.error('Error submitting crop:', error);
+      alert('Failed to submit crop');
+    }
+  };
+
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
@@ -45,32 +69,6 @@ const App = () => {
       setIsOwner(owner.toLowerCase() === account.toLowerCase());
     } catch (error) {
       console.error('Error checking owner:', error);
-    }
-  };
-
-  const onRegisterFarmer = async (name) => {
-    if (agriVerifyContract) {
-      try {
-        const tx = await agriVerifyContract.registerFarmer(name);
-        await tx.wait();
-      } catch (error) {
-        console.error('Error registering farmer:', error);
-      }
-    }
-  };
-
-  const onSubmitCrop = async (cropName) => {
-    if (agriVerifyContract) {
-      try {
-        const tx = await agriVerifyContract.submitCrop(cropName);
-        await tx.wait();
-        const newCropId = await agriVerifyContract.cropCount();
-        setCropId(newCropId.toString());
-        alert(`Crop submitted successfully! Crop ID: ${newCropId}`);
-      } catch (error) {
-        console.error('Error submitting crop:', error);
-        alert('Failed to submit crop. Please try again.');
-      }
     }
   };
 

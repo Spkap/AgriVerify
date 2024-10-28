@@ -1,87 +1,73 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-50 to-purple-100 text-gray-800 min-h-screen font-sans;
+  }
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
+@layer components {
+  /* Container styling */
+  .container {
+    @apply max-w-4xl mx-auto px-4 py-12;
+  }
 
-h1,
-h2 {
-  text-align: center;
-  color: #333;
-}
+  /* Card styling */
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-8 mb-6 transition-transform transform hover:shadow-2xl hover:scale-105;
+  }
 
-.card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
+  /* Title and header */
+  h1 {
+    @apply text-6xl font-extrabold text-center bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent my-10;
+  }
 
-input,
-button,
-.button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
+  h2 {
+    @apply text-2xl font-semibold text-blue-600 mb-6 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-10 after:bg-blue-400;
+  }
 
-input {
-  border: 1px solid #ddd;
-}
+  /* Form inputs */
+  input {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-200 focus:border-blue-400 transition-colors duration-200;
+  }
 
-button,
-.button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 16px;
-  text-align: center;
-}
+  /* Buttons */
+  .button,
+  button {
+    @apply w-full px-5 py-3 mt-4 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 transition-transform transform hover:scale-105 focus:ring-2 focus:ring-blue-200;
+  }
 
-button:hover,
-.button:hover {
-  background-color: #45a049;
-}
+  /* Loading and error messages */
+  .loading {
+    @apply text-center text-blue-500 text-xl mt-10 animate-bounce;
+  }
 
-.loading,
-.error {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 18px;
-}
+  .error {
+    @apply text-center text-red-500 text-lg p-3 bg-red-100 rounded-lg border border-red-300;
+  }
 
-.error {
-  color: red;
-}
+  /* QR code styling */
+  .qr-code {
+    @apply flex justify-center mt-8 bg-white p-4 rounded-lg shadow-md;
+  }
 
-.qr-code {
-  text-align: center;
-  margin-top: 20px;
-}
+  /* Crop details styling */
+  .crop-details p {
+    @apply text-gray-600 flex items-center gap-3 border-b border-gray-100 pb-3;
+  }
 
-.qr-code canvas {
-  max-width: 100%;
-  height: auto;
-}
+  /* Responsive adjustments */
+  @screen sm {
+    .container {
+      @apply px-6;
+    }
+  }
 
-.crop-details p {
-  margin: 10px 0;
-}
-
-.back-button {
-  max-width: 200px;
-  margin: 20px auto;
+  @screen md {
+    .card {
+      @apply p-10;
+    }
+  }
 }

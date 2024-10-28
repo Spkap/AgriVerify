@@ -20,13 +20,17 @@ const CertifyCrop = ({ agriVerifyContract }) => {
   return (
     <div className="card">
       <h2>Certify Crop (Owner Only)</h2>
-      <input
-        type="number"
-        value={certifyCropId}
-        onChange={(e) => setCertifyCropId(e.target.value)}
-        placeholder="Enter Crop ID to Certify"
-      />
-      <button onClick={onCertifyCrop}>Certify Crop</button>
+      <div className="form-group">
+        <input
+          type="number"
+          value={certifyCropId}
+          onChange={(e) => setCertifyCropId(e.target.value)}
+          placeholder="Enter Crop ID to Certify"
+          min="1"
+          required
+        />
+        <button onClick={onCertifyCrop}>Certify Crop</button>
+      </div>
     </div>
   );
 };

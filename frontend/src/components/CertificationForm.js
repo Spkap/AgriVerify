@@ -14,12 +14,13 @@ const CertificationForm = ({ onSubmitCrop }) => {
   return (
     <div className="card">
       <h2>Submit Crop</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-group">
         <input
           type="text"
           value={cropName}
           onChange={(e) => setCropName(e.target.value)}
           placeholder="Enter Crop Name"
+          required
         />
         <button type="submit">Submit Crop</button>
       </form>

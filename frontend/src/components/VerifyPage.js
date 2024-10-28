@@ -48,7 +48,7 @@ const VerifyPage = () => {
   return (
     <div className="container">
       <h2>Crop Verification</h2>
-      <div className="card">
+      <div className="card crop-details">
         <p>
           <strong>Crop ID:</strong> {cropId}
         </p>
@@ -60,10 +60,19 @@ const VerifyPage = () => {
         </p>
         <p>
           <strong>Certification Status:</strong>{' '}
-          {cropDetails.certificationStatus}
+          <span
+            className={`status-badge ${
+              cropDetails.certificationStatus === 'Certified'
+                ? 'status-certified'
+                : 'status-pending'
+            }`}
+          >
+            {cropDetails.certificationStatus}
+          </span>
         </p>
         <p>
-          <strong>Farmer Address:</strong> {cropDetails.farmer}
+          <strong>Farmer Address:</strong>{' '}
+          <span className="font-mono text-sm">{cropDetails.farmer}</span>
         </p>
         <Link to="/" className="button back-button">
           Back to Home
