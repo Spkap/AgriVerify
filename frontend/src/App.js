@@ -95,7 +95,7 @@ const App = () => {
               path="/"
               element={
                 connectedAccount ? (
-                  <div className="grid gap-8 md:grid-cols-2">
+                  <div className="grid-layout">
                     <div className="space-y-8">
                       <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
                       <CertificationForm onSubmitCrop={onSubmitCrop} />
