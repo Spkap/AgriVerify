@@ -4,52 +4,41 @@
 
 @layer base {
   body {
-    @apply bg-[#f4f4f4] text-gray-800 min-h-screen font-sans;
+    @apply bg-gradient-to-b from-green-50 to-green-100 min-h-screen font-sans text-gray-800;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-4xl mx-auto px-4 py-12;
+    @apply max-w-4xl mx-auto px-4 py-8;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-lg p-8 mb-10 mt-4
-           hover:shadow-2xl transition-all duration-300;
+    @apply bg-white rounded-xl shadow-lg p-6 mb-8;
   }
 
   h1 {
-    @apply text-6xl font-extrabold text-center text-gray-900
-           mt-20 mb-10;
+    @apply text-4xl md:text-6xl font-extrabold text-center text-green-800 mb-12;
   }
 
   h2 {
-    @apply text-2xl font-semibold text-gray-900 mb-6 text-center relative 
-           after:content-[''] after:absolute after:left-1/2 
-           after:-translate-x-1/2 after:bottom-0 after:h-0.5;
+    @apply text-2xl font-semibold text-green-800 mb-6;
   }
 
   .form-group {
     @apply space-y-4;
   }
 
-  .input,
-  input {
-    @apply w-full px-4 py-3 rounded-lg border border-gray-300 
-           shadow-sm focus:ring-2 focus:ring-[#4caf50]/20 
-           focus:border-[#4caf50] transition-colors duration-200;
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500;
   }
 
-  .button,
-  button {
-    @apply w-full px-5 py-3 bg-[#4caf50] text-white font-medium 
-           rounded-lg shadow hover:bg-[#45a049] 
-           focus:ring-2 focus:ring-[#4caf50]/20 
-           transition-all duration-200;
+  .button {
+    @apply w-full px-4 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200;
   }
 
   .loading {
-    @apply text-center text-[#4caf50] text-xl mt-10 animate-bounce;
+    @apply text-center text-green-600 text-xl mt-10 animate-pulse;
   }
 
   .status-badge {
@@ -57,7 +46,7 @@
   }
 
   .status-certified {
-    @apply bg-[#4caf50]/10 text-[#45a049];
+    @apply bg-green-100 text-green-800;
   }
 
   .status-pending {
@@ -65,32 +54,15 @@
   }
 
   .qr-code {
-    @apply flex justify-center mt-8 bg-white p-4 
-           rounded-lg shadow-md;
+    @apply flex justify-center mt-4;
   }
 
   .crop-details {
     @apply space-y-4;
   }
 
-  .crop-details p {
-    @apply text-gray-600 flex items-center gap-3 
-           border-b border-gray-100 pb-3 last:border-b-0;
-  }
-
   .back-button {
-    @apply mt-6 bg-gray-500 hover:bg-gray-600;
-  }
-
-  @screen sm {
-    .container {
-      @apply px-6;
-    }
-  }
-
-  @screen md {
-    .card {
-      @apply p-10;
-    }
+    @apply mt-8 block w-full px-4 py-2 bg-gray-600 text-white font-medium rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200 text-center;
   }
 }
+

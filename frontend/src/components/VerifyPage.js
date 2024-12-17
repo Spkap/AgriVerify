@@ -47,7 +47,9 @@ const VerifyPage = () => {
 
   return (
     <div className="container">
-      <h2>Crop Verification</h2>
+      <h2 className="text-2xl font-semibold text-green-800 mb-6">
+        Crop Verification
+      </h2>
       <div className="card crop-details">
         <p>
           <strong>Crop ID:</strong> {cropId}
@@ -72,9 +74,11 @@ const VerifyPage = () => {
         </p>
         <p>
           <strong>Farmer Address:</strong>{' '}
-          <span className="font-mono text-sm">{cropDetails.farmer}</span>
+          <span className="font-mono text-sm break-all">
+            {cropDetails.farmer}
+          </span>
         </p>
-        <Link to="/" className="button back-button">
+        <Link to="/" className="back-button">
           Back to Home
         </Link>
       </div>

@@ -85,42 +85,50 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container">
-        <h1>AgriVerify </h1>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              connectedAccount ? (
-                <>
-                  <div >
-                    <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
-                  </div>
-                  <div >
-                    <CertificationForm onSubmitCrop={onSubmitCrop} />
-                  </div>
-                  {cropId && (
-                    <div className="card">
-                      <h2>Generated QR Code for Crop ID: {cropId}</h2>
-                      <QRCodeDisplay cropId={cropId} />
+      <div className="min-h-screen">
+        <div className="container">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-center text-green-800 mb-12">
+            AgriVerify
+          </h1>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                connectedAccount ? (
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <div className="space-y-8">
+                      <FarmerOnBoarding onRegisterFarmer={onRegisterFarmer} />
+                      <CertificationForm onSubmitCrop={onSubmitCrop} />
                     </div>
-                  )}
-                  {isOwner && (
-                    <CertifyCrop agriVerifyContract={agriVerifyContract} />
-                  )}
-                </>
-              ) : (
-                <div className="card">
-                  <button onClick={connectWallet}>Connect Wallet</button>
-                </div>
-              )
-            }
-          />
-          <Route
-            path="/verify/:cropId"
-            element={<VerifyPage agriVerifyContract={agriVerifyContract} />}
-          />
-        </Routes>
+                    <div className="space-y-8">
+                      {cropId && (
+                        <div className="card">
+                          <h2 className="text-xl font-semibold text-green-800 mb-4">
+                            Generated QR Code for Crop ID: {cropId}
+                          </h2>
+                          <QRCodeDisplay cropId={cropId} />
+                        </div>
+                      )}
+                      {isOwner && (
+                        <CertifyCrop agriVerifyContract={agriVerifyContract} />
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="card max-w-md mx-auto">
+                    <button onClick={connectWallet} className="button">
+                      Connect Wallet
+                    </button>
+                  </div>
+                )
+              }
+            />
+            <Route
+              path="/verify/:cropId"
+              element={<VerifyPage agriVerifyContract={agriVerifyContract} />}
+            />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

@@ -19,7 +19,9 @@ const CertifyCrop = ({ agriVerifyContract }) => {
 
   return (
     <div className="card">
-      <h2>Certify Crop (Owner Only)</h2>
+      <h2 className="text-2xl font-semibold text-green-800 mb-6">
+        Certify Crop (Owner Only)
+      </h2>
       <div className="form-group">
         <input
           type="number"
@@ -28,8 +30,11 @@ const CertifyCrop = ({ agriVerifyContract }) => {
           placeholder="Enter Crop ID to Certify"
           min="1"
           required
+          className="input"
         />
-        <button onClick={onCertifyCrop}>Certify Crop</button>
+        <button onClick={onCertifyCrop} className="button">
+          Certify Crop
+        </button>
       </div>
     </div>
   );

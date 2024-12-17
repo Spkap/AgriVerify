@@ -3,18 +3,16 @@ import React, { useState } from 'react';
 const FarmerOnBoarding = ({ onRegisterFarmer }) => {
   const [name, setName] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (onRegisterFarmer) {
-      await onRegisterFarmer(name);
-      setName('');
-    }
+    onRegisterFarmer(name);
+    setName('');
   };
 
   return (
     <div className="card">
       <h2>Farmer Onboarding</h2>
-      <form onSubmit={handleSubmit} className="form-group space-y-4">
+      <form onSubmit={handleSubmit} className="form-group">
         <input
           type="text"
           value={name}

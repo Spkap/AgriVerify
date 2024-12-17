@@ -3,12 +3,10 @@ import React, { useState } from 'react';
 const CertificationForm = ({ onSubmitCrop }) => {
   const [cropName, setCropName] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (onSubmitCrop) {
-      await onSubmitCrop(cropName);
-      setCropName('');
-    }
+    onSubmitCrop(cropName);
+    setCropName('');
   };
 
   return (
@@ -21,8 +19,11 @@ const CertificationForm = ({ onSubmitCrop }) => {
           onChange={(e) => setCropName(e.target.value)}
           placeholder="Enter Crop Name"
           required
+          className="input"
         />
-        <button type="submit">Submit Crop</button>
+        <button type="submit" className="button">
+          Submit Crop
+        </button>
       </form>
     </div>
   );
