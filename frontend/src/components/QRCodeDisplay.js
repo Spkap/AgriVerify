@@ -15,7 +15,7 @@ const QRCodeDisplay = ({ cropId }) => {
     }
   }, [qrValue]);
 
-  if (!cropId) return <div>No crop ID available for QR code generation.</div>;
+  if (!cropId) return <div className="info-message">No crop ID available for QR code generation.</div>;
 
   return (
     <div className="qr-code">

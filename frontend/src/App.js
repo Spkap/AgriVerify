@@ -87,7 +87,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen">
         <div className="container">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-center text-green-800 mb-12">
+          <h1>
             AgriVerify
           </h1>
           <Routes>

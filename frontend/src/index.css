@@ -8,6 +8,12 @@
   }
 }
 
+@layer utilities {
+  .address-mono {
+    @apply font-mono text-sm break-all;
+  }
+}
+
 @layer components {
   .container {
     @apply max-w-6xl mx-auto px-4 py-8 flex flex-col items-center space-y-8;
@@ -78,5 +84,9 @@
     .grid-layout {
       @apply grid-cols-2;
     }
+  }
+
+  .info-message {
+    @apply p-4 bg-blue-50 text-blue-700 rounded-md shadow;
   }
 }

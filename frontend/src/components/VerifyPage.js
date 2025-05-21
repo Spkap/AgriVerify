@@ -74,7 +74,7 @@ const VerifyPage = () => {
         </p>
         <p>
           <strong>Farmer Address:</strong>{' '}
-          <span className="font-mono text-sm break-all">
+          <span className="address-mono">
             {cropDetails.farmer}
           </span>
         </p>
